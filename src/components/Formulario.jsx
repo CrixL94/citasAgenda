@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Formulario = () => {
+const Formulario = ({ clientes, setClientes }) => {
   const [nombre, setNombre] = useState("");
   const [contacto, setContacto] = useState("");
   const [fecha, setFecha] = useState("");
@@ -19,6 +19,21 @@ const Formulario = () => {
       return;
     }
     setError(false);
+
+    //Objeto de clientes
+    const objetoCLientes = {
+      nombre,
+      contacto,
+      fecha,
+      servicio,
+    };
+    setClientes([...clientes, objetoCLientes]);
+
+    // reinicar form
+    setNombre("");
+    setContacto("");
+    setFecha("");
+    setServicio("");
   };
 
   return (
