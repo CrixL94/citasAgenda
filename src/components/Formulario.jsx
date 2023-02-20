@@ -129,8 +129,6 @@ const Formulario = ({ clientes, setClientes }) => {
           <input
             id="hora"
             type="time"
-            min={"09"}
-            max={"20"}
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
             value={hora}
             onChange={(e) => {
