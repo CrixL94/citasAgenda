@@ -5,16 +5,24 @@ const Formulario = ({ clientes, setClientes }) => {
   const [nombre, setNombre] = useState("");
   const [contacto, setContacto] = useState("");
   const [fecha, setFecha] = useState("");
+  const [hora, setHora] = useState("");
   const [servicio, setServicio] = useState("");
 
   const [error, setError] = useState(false);
+
+  const generarId = () => {
+    const random = Math.random().toString(36).substring(2);
+    const fecha = Date.now().toString(36);
+
+    return random + fecha;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     //console.log("Enviando");
 
     //validacion del formulario
-    if ([nombre, contacto, fecha, servicio].includes("")) {
+    if ([nombre, contacto, fecha,hora, servicio].includes("")) {
       //console.log("Hay algun campo vacio");
       setError(true);
       return;
@@ -26,7 +34,9 @@ const Formulario = ({ clientes, setClientes }) => {
       nombre,
       contacto,
       fecha,
+      hora,
       servicio,
+      id: generarId(),
     };
     setClientes([...clientes, objetoCLientes]);
 
@@ -105,6 +115,26 @@ const Formulario = ({ clientes, setClientes }) => {
             value={fecha}
             onChange={(e) => {
               setFecha(e.target.value);
+            }}
+          />
+        </div>
+
+        <div className="mb-5">
+          <label
+            htmlFor="hora"
+            className="block text-grey-700 uppercase font-bold"
+          >
+            Hora de la Cita
+          </label>
+          <input
+            id="hora"
+            type="time"
+            min={"09"}
+            max={"20"}
+            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+            value={hora}
+            onChange={(e) => {
+              setHora(e.target.value);
             }}
           />
         </div>

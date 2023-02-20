@@ -13,7 +13,7 @@ const ListadoClientes = ({ clientes }) => {
       </p>
 
       {clientes.map((clienteArray) => {
-        return <Cliente clienteArray={clienteArray} />;
+        return <Cliente key={clienteArray.id} clienteArray={clienteArray} />;
       })}
     </div>
   );
