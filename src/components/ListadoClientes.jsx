@@ -1,6 +1,6 @@
 import Cliente from "./Cliente";
 
-const ListadoPacientes = () => {
+const ListadoClientes = ({ clientes }) => {
   return (
     <div className="md:w-1/2 lg:w-1/2 md:h-screen overflow-y-scroll">
       <h2 className="font-black text-3xl text-center">Listado Clientes</h2>
@@ -12,11 +12,11 @@ const ListadoPacientes = () => {
         </span>
       </p>
 
-      <Cliente/>
-      <Cliente/>
-      <Cliente/>
+      {clientes.map((clienteArray) => {
+        return <Cliente clienteArray={clienteArray} />;
+      })}
     </div>
   );
 };
 
-export default ListadoPacientes;
+export default ListadoClientes;
