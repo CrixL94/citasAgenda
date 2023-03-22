@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Error from "./Error";
 
-const Formulario = ({ clientes, setClientes, cliente }) => {
+const Formulario = ({ clientes, setClientes, cliente, setCliente }) => {
   const [nombre, setNombre] = useState("");
   const [contacto, setContacto] = useState("");
   const [fecha, setFecha] = useState("");
@@ -47,9 +47,23 @@ const Formulario = ({ clientes, setClientes, cliente }) => {
       fecha,
       hora,
       servicio,
-      id: generarId(),
     };
-    setClientes([...clientes, objetoCLientes]);
+
+    if (cliente.id) {
+      //Editando registro
+      objetoCLientes.id = clientes.id;
+
+      const clientesActualizados = clientes.map((clienteState) =>
+        clienteState.id === cliente.id ? objetoCLientes : clienteState
+      );
+
+      setClientes(clientesActualizados);
+      setCliente = {};
+    } else {
+      //Nuevo registro
+      objetoCLientes.id = generarId();
+      setClientes([...clientes, objetoCLientes]);
+    }
 
     // reinicar form
     setNombre("");
@@ -170,7 +184,7 @@ const Formulario = ({ clientes, setClientes, cliente }) => {
           type="submit"
           className="bg-indigo-600 w-full p-3 text-white uppercase font-bold
                      hover:bg-indigo-700 cursor-pointer transition-colors"
-          value="Agregar Cita"
+          value={cliente.id ? "Editar Cliente" : "Agregar Cliente"}
         />
       </form>
     </div>
