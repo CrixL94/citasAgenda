@@ -1,4 +1,4 @@
-const Cliente = ({clienteArray}) => {
+const Cliente = ({clienteArray,setCliente}) => {
   const {nombre,contacto,fecha,hora,servicio} = clienteArray
 
   return (
@@ -32,6 +32,7 @@ const Cliente = ({clienteArray}) => {
         <button 
         type="button"
         className="py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg"
+        onClick={()=>setCliente(clienteArray)}
         
         
         

@@ -1,6 +1,6 @@
 import Cliente from "./Cliente";
 
-const ListadoClientes = ({ clientes }) => {
+const ListadoClientes = ({ clientes, setCliente }) => {
   return (
     <div className="md:w-1/2 lg:w-1/2 md:h-screen overflow-y-scroll">
       {clientes && clientes.length ? (
@@ -15,7 +15,11 @@ const ListadoClientes = ({ clientes }) => {
 
           {clientes.map((clienteArray) => {
             return (
-              <Cliente key={clienteArray.id} clienteArray={clienteArray} />
+              <Cliente
+                key={clienteArray.id}
+                clienteArray={clienteArray}
+                setCliente={setCliente}
+              />
             );
           })}
         </div>

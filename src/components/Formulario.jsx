@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Error from "./Error";
 
-const Formulario = ({ clientes, setClientes }) => {
+const Formulario = ({ clientes, setClientes, cliente }) => {
   const [nombre, setNombre] = useState("");
   const [contacto, setContacto] = useState("");
   const [fecha, setFecha] = useState("");
@@ -9,6 +9,17 @@ const Formulario = ({ clientes, setClientes }) => {
   const [servicio, setServicio] = useState("");
 
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    if (Object.keys(cliente).length > 0) {
+      //console.log(cliente);
+      setNombre(cliente.nombre);
+      setContacto(cliente.contacto);
+      setFecha(cliente.fecha);
+      setHora(cliente.hora);
+      setServicio(cliente.servicio);
+    }
+  }, [cliente]);
 
   const generarId = () => {
     const random = Math.random().toString(36).substring(2);
