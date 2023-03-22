@@ -22,7 +22,7 @@ const Formulario = ({ clientes, setClientes }) => {
     //console.log("Enviando");
 
     //validacion del formulario
-    if ([nombre, contacto, fecha,hora, servicio].includes("")) {
+    if ([nombre, contacto, fecha, hora, servicio].includes("")) {
       //console.log("Hay algun campo vacio");
       setError(true);
       return;
